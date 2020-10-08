@@ -13,9 +13,9 @@ class CustomerTest {
 
     @BeforeAll
     public void setUp(){
-        Movie regularMovie = new Movie("Avenger", Movie.REGULAR);
-        Movie newReleaseMovie = new Movie("Harry Potter",Movie.NEW_RELEASE);
-        Movie childrenMovie = new Movie("Baby Shark",Movie.CHILDRENS);
+        Movie regularMovie = new Movie("Avenger", new RegularPrice());
+        Movie newReleaseMovie = new Movie("Harry Potter",new NewReleasePrice());
+        Movie childrenMovie = new Movie("Baby Shark",new ChildrenPrice());
 
         rentalWithRegular = new Rental(regularMovie,3);
         rentalWithNewRelease = new Rental(newReleaseMovie,2);

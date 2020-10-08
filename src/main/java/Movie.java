@@ -1,24 +1,24 @@
 public class Movie {
-    public static final int CHILDRENS = 2;
-    public static final int REGULAR = 0;
-    public static final int NEW_RELEASE = 1;
     private final String title;
-    private int priceCode;
+    private final Price price;
 
-    public Movie(String title, int priceCode) {
+    public Movie(String title, Price price) {
         this.title = title;
-        this.priceCode = priceCode;
+        this.price = price;
     }
 
-    public int getPriceCode() {
-        return priceCode;
-    }
-    public void setPriceCode(int arg) {
-        priceCode = arg;
-    }
+
+
     public String getTitle (){
         return title;
     }
 
+    public double getCharge(int days){
+        return price.getCharge(days);
+    }
+
+    public int getFrequentRenterPoints(int days){
+        return price.getFrequentRenterPoints(days);
+    }
 
 }
