@@ -91,5 +91,24 @@ class CustomerTest {
 
     }
 
+    @Test
+    public void should_print_correct_html_statement_given_a_customer_rent_1_regular_movie_3_days_1_new_release_movie_2_days_1_children_movie_4_days() {
 
+        Customer customer = new Customer("xianhao");
+        customer.addRental(rentalWithRegular);
+        customer.addRental(rentalWithNewRelease);
+        customer.addRental(rentalWithChildren);
+
+        String resState = customer.htmlStatement();
+
+        String expected = "<H1>Rentals for <EM>" + "xianhao" + "</EM></H1><P>\n" +
+                "Avenger: " + 3.5 + "<BR>\n" +
+                "Harry Potter: " + 6.0 + "<BR>\n" +
+                "Baby Shark: " + 3.0 + "<BR>\n" +
+                "<P>You owe <EM>" + 12.5 + "</EM><P>\n" +
+                "On this rental you earned <EM>" + 4 + "</EM> frequent renter points<P>";
+        Assertions.assertEquals(expected, resState);
+
+
+    }
 }

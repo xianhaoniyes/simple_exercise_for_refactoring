@@ -25,6 +25,14 @@ public class Customer {
         return result.toString();
     }
 
+    public String htmlStatement(){
+        StringBuilder result = new StringBuilder("<H1>Rentals for <EM>" + getName() + "</EM></H1><P>\n");
+
+        getIndividualMovieHtmlInfo(result);
+        getSummaryHtmlInfo(result);
+
+        return result.toString();
+    }
 
     private void getIndividualMovieInfo(StringBuilder result){
 
@@ -38,6 +46,20 @@ public class Customer {
         result.append("You earned ").append(this.getTotalFrequentRenterPoints()).append(" frequent renter points");
 
     }
+
+    private void getIndividualMovieHtmlInfo(StringBuilder result){
+        for (Rental each:rentals)  {
+            result.append(each.getMovie().getTitle()).append(": ").append(each.getCharge()).append("<BR>\n");
+        }
+    }
+
+    private void getSummaryHtmlInfo(StringBuilder result){
+        result.append("<P>You owe <EM>").append(getTotalCharge()).append("</EM><P>\n");
+        result.append("On this rental you earned <EM>").append(this.getTotalFrequentRenterPoints()).append("</EM> frequent renter points<P>");
+
+    }
+
+
 
     private double getTotalCharge(){
         return this.rentals.stream().mapToDouble(Rental::getCharge).sum();
